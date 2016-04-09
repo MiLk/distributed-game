@@ -2,7 +2,6 @@
 
 var redisClient = require('../../redis').getClient();
 var messaging = require('../../messaging');
-
 var waitingQueueKey = 'matchmaking_queue:waiting';
 var confirmQueueKey = 'matchmaking_queue:confirm';
 
@@ -79,7 +78,7 @@ class Queue {
           var players = confirmId.split(':');
           var opponent = players[0] === sessionId ? players[1] : players[0];
 
-          // TODO: Notify the game server to start the game
+          require('../game').startGame(confirmId);
           messaging
             .send(opponent, messaging.createMessage('gameStart', true))
             .then(() => {
@@ -138,6 +137,21 @@ class Queue {
         }
         markAsCanceled();
       });
+    });
+  }
+
+  remove(confirmId) {
+    return new Promise((resolve, reject) => {
+      redisClient.multi()
+        .srem(confirmQueueKey, confirmId)
+        .del(confirmQueueKey + ':' + confirmId)
+        .exec((err) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve();
+        });
     });
   }
 }

@@ -9,7 +9,7 @@ var bodyParser = require('body-parser')
 var app = express();
 
 app.use(helmet());
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '..', '..', 'client')));
 
@@ -18,5 +18,5 @@ modules.initializeRoutes(app);
 
 var port = config.get('http.port');
 app.listen(port, function () {
-  console.log('Server started and listening on port: ' + port + '!');
+  console.log('Routing server started and listening on port: ' + port + '!');
 });

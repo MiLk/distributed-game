@@ -81,5 +81,6 @@ function getRouter() {
 }
 
 module.exports = {
-  getRouter: getRouter
+  getRouter: getRouter,
+  remove: queue.remove
 };
