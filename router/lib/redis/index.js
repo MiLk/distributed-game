@@ -5,11 +5,11 @@ var redis = require('redis');
 var client = redis.createClient(config.get('redis.url'));
 
 process.on('beforeExit', function () {
-   client.quit();
+  client.quit();
 });
 
 module.exports = {
-    getClient: function () {
-        return client;
-    }
+  getClient: function () {
+    return client;
+  }
 };

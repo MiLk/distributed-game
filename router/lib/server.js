@@ -18,5 +18,5 @@ modules.initializeRoutes(app);
 
 var port = config.get('http.port');
 app.listen(port, function () {
-    console.log('Server started and listening on port: ' + port +'!');
+  console.log('Server started and listening on port: ' + port + '!');
 });

@@ -2,3 +2,7 @@ redis:
   image: redis:3
   ports:
     - 6379:6379
+loadbalancer:
+  build: loadbalancer
+  ports:
+    - 3000:3000
