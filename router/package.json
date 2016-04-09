@@ -1,0 +1,19 @@
+{
+  "name": "distributed-game-router",
+  "version": "0.0.1",
+  "description": "Distributed game router",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Emilien Kenler <hello@emilienkenler.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "config": "^1.20.1",
+    "express": "^4.13.4",
+    "helmet": "^1.3.0",
+    "js-yaml": "^3.5.5",
+    "redis": "^2.6.0-1"
+  }
+}
